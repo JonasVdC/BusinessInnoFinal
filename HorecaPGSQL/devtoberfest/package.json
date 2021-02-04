@@ -1,0 +1,54 @@
+{
+  "name": "devtoberfest",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^4",
+    "cds-dbm": "0.0.23",
+    "cds-pg": "0.0.41",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "sqlite3": "^5",
+    "mbt": "~1.0.16"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "database"
+      },
+      "database": {
+        "impl": "cds-pg",
+        "model": [
+          "srv"
+        ],
+        "credentials": {
+          "host": "localhost",
+          "port": 5432,
+          "database": "horeca",
+          "user": "postgres",
+          "password": "postgres"
+        }
+      }
+    },
+    "migrations": {
+      "db": {
+        "schema": {
+          "default": "public",
+          "clone": "_cdsdbm_clone",
+          "reference": "_cdsdbm_ref"
+        },
+        "deploy": {
+          "tmpFile": "tmp/_autodeploy.json",
+          "undeployFile": "db/undeploy.json"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "start": "cds run"
+  }
+}
